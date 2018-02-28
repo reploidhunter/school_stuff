@@ -9,7 +9,7 @@
 
 <?php
 $userNameErr = $passwdErr = $userName = $passwd = $userCred = $name = "";
-
+session_destroy();
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	if (empty($_POST["userName"])) {
 		$userNameErr = "Please enter your username.";
@@ -52,8 +52,7 @@ if($userName != "" && $passwd != "") {
 	if($userCred == $authorizedUser) {
 		session_start();
 		$_SESSION["name"] = $name;
-print_r($_SESSION);
-//		header("Location: index.php");
+		header("Location: index.php");
 	}
 	else{
 		$userCred = "";
