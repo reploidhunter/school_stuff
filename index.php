@@ -18,6 +18,7 @@ else{
 	}
 	if($_GET["action"] === "add") {
 		addToCart($_GET["movie_id"]);
+		header('Location: http://192.168.100.80/~jb664052/module4/index.php');
 	}
 }
 
@@ -48,7 +49,7 @@ function displayCart(){
 	
 	if($count >= 1){
 		echo "<table style='width:50%'>";
-		echo "<tr> <th>Title, Year</th> <th>Cover</th> <th>Remove</th> </tr>";
+		echo "<tr> <th>Title (Year)</th> <th>Cover</th> <th>Remove</th> </tr>";
 		
 		foreach($movieArr as $value){
 			$search = "http://www.omdbapi.com/?apikey=cefcfae&i=" . $value . "&type=movie&r=json";
@@ -60,13 +61,14 @@ function displayCart(){
 			$cover = trim($coverArray[0], '"');
 			$title = trim($titleArray[0], '"');
 			$year = trim($yearArray[0], '"');
-			echo "<tr> <td align=\"center\">" . $title . ", " . $year . "</td> <td align=\"center\"><img src=\"" . $cover . 
+			echo "<tr> <td align=\"center\"><a href=\"https://www.imdb.com/title/" . $value . "\" target=\"_blank\"> " . $title . " (" . $year . ")</a></td> <td align=\"center\"><img src=\"" . $cover . 
 				"\" alt=\"Cover Art\"></td> <td align=\"center\"> <a class=\"remove\" href=\"\" data-movieID=\"$value\" data-title=\"$title\">X</a> </td> </tr>";
 		}
 		unset($value);
 		echo "</table>";
-		echo "<button type=\"button\" onClick=\"location.href = 'http://192.168.100.80/~jb664052/module4/search.php';\">Add a Movie</button>";
 	}
+	echo "<button type=\"button\" onClick=\"location.href = 'http://192.168.100.80/~jb664052/module4/search.php';\">Add a Movie</button>";
+	echo "<br><a href=\"/~jb664052/index.html\">ePortfolio</a>";
 }
 
 function removeFromCart($movieID){
@@ -96,8 +98,9 @@ function addToCart($movieID){
 	foreach($movieArr as $value){
 		$writeString .= $value . ";";
 	}
-	file_put_contents("data/cart.db", $writeString);
-	displayCart();
+	$fileLoad = fopen("data/cart.db", "w") or die("Unable to open file!");
+	fwrite($fileLoad, $writeString);
+	fclose($fileLoad);
 }
 
 ?>

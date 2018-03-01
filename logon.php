@@ -71,6 +71,6 @@ if($userName != "" && $passwd != "") {
 	<button type="submit" name="submit" value="Submit">Submit</button>
 	<button type="reset" name="reset" value="Reset">Reset</button>
 </form>
-
+<a href="/~jb664052/index.html">ePortfolio</a>
 </body>
 </html>

@@ -1,6 +1,7 @@
 window.onload = function(){
 var logout = document.getElementById("logout");
 var reMovie = document.getElementsByClassName("remove");
+var addMovie = document.getElementsByClassName("add");
 
 	logout.onclick = function(){
 		if(confirm("Are you sure you want to log out?")) {
@@ -18,8 +19,12 @@ var reMovie = document.getElementsByClassName("remove");
 			return false;
 		}
 	}
-}
 
-function addMovie(){
-
+	for(i = 0; i < addMovie.length; i++){
+		addMovie[i].onclick = function(){
+				var movieID = this.getAttribute('data-movieID');
+				window.location.replace("http://192.168.100.80/~jb664052/module4/index.php?action=add&movie_id=" + movieID);
+			return false;
+		}
+	}
 }
