@@ -13,15 +13,22 @@ if(sizeof($_POST) == 0) {
 	displaySearch();
 }
 else{
-	displayResults($_POST["keyword"]);
+	displayResults(test_input($_POST["keyword"]));
+}
+
+function test_input($data) {
+	$data = trim($data);
+	$data = stripslashes($data);
+	$data = htmlspecialchars($data);
+	return $data;
 }
 
 function displaySearch() {
 	echo "Welcome " . $_SESSION["name"] . "<a id=\"logout\" href=\"\">(Logout)</a> <br>";
 	echo "myMovies Xpress! <br>";
 	echo "Please enter a search keyword: ";
-	echo "<form action=\"http://192.168.100.80/~jb664052/module4/search.php\" method=\"post\"> <input type=\"text\" name=\"keyword\" required> <br> 
-		<button type=\"button\" onClick=\"location.href = 'http://192.168.100.80/~jb664052/module4/index.php';\">Cancel</button> 
+	echo "<form action=\"search.php\" method=\"post\"> <input type=\"text\" name=\"keyword\" required> <br> 
+		<button type=\"button\" onClick=\"location.href = 'index.php';\">Cancel</button> 
 		<input type=\"submit\"> </form>";
 }
 
@@ -48,7 +55,7 @@ function displayResults($keyword) {
 				$year = $value["Year"];
 				$cover = $value["Poster"];
 				$movieId = $value["imdbID"];
-				echo "<tr> <td align=\"center\">" . $title . " (" . $year . ")</td> <td align=\"center\"><img src=\"" . $cover . "\" alt=\"Cover Art\"></td> <td align=\"center\"> <a class=\"add\" href=\"\" data-movieID=\"$movieId\" data-title=\"$title\">+</a> </td> </tr>";
+				echo "<tr> <td align=\"center\"><a href=\"https://www.imdb.com/title/" . $movieId . "\" target=\"_blank\"> " . $title . " (" . $year . ")</a></td> <td align=\"center\"><img src=\"" . $cover . "\" alt=\"Cover Art\"></td> <td align=\"center\"> <a class=\"add\" href=\"\" data-movieID=\"$movieId\" data-title=\"$title\">+</a> </td> </tr>";
 		}
 		unset($value);
 		echo "</table>";

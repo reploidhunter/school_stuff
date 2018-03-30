@@ -1,0 +1,201 @@
+
+.custombox {
+	display: block;
+	position: relative;
+	padding-left: 20px;
+	margin-bottom: 12px;
+	cursor: pointer;
+	font-size: 16px;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+.custombox input {
+	position: absolute;
+	opacity: 0;
+	cursor: pointer;
+}
+
+.checkmark {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 16px;
+	width: 16px;
+	background-color: grey;
+}
+
+.custombox input:checked ~ .checkmark {
+	background-color: blue;
+}
+
+.checkmark:after {
+	content: "";
+	position: absolute;
+	display: none;
+}
+
+.custombox input:checked ~ .checkmark:after {
+	display: block;
+}
+
+.custombox .checkmark:after {
+	left: 3px;
+	top: 3px;
+	width: 5px;
+	height: 8px;
+	border: solid white;
+	border-width: 0 2px 2px 0;
+	-webkit-transform: rotate(45deg);
+	-ms-transform: rotate(45deg);
+	transform: rotate(45deg);
+}
+
+.customradio {
+	display: block;
+	position: relative;
+	padding-left: 24px;
+	margin-bottom: 12px;
+	cursor: pointer;
+	font-size: 16px;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+.customradio input {
+	position: absolute;
+	opacity: 0;
+	cursor: pointer;
+}
+
+.radiodot {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 18px;
+	width: 18px;
+	background-color: grey;
+	border-radius: 50%;
+}
+
+.customradio input:checked ~ .radiodot {
+	background-color: green;
+}
+
+
+.customradio:after {
+	content: "";
+	position: absolute;
+	display: none;
+}
+
+.customradio input:checked ~ .radiodot:after {
+	display: block;
+}
+
+
+.customradio .radiodot:after {
+ 	top: 5px;
+	left: 5px;
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
+	background: white;
+}
+
+.columns{
+	-webkit-column-count: 2;
+	-moz-column-count: ;
+	column-count: 2;
+}
+
+h2.a{
+		color: blue;
+}
+
+h2.b{
+	color: red;
+}
+
+h2.c{
+	color: green;
+}
+
+li.italic{
+	font-style: italic;
+}
+
+li.bold{
+	font-weight: bold;
+}
+
+li.underline{
+	text-decoration: underline;
+}
+
+a.expand:hover {
+	font-size: 150%;
+}
+
+/* The following CSS code blocks produce a pop-up modal window to display additional movie information */
+
+/* The Modal (background) */
+.modal {
+ display: none; /* Hidden by default */
+ position: fixed; /* Stay in place */
+ z-index: 1; /* Sit on top */
+ padding-top: 100px; /* Location of the box */
+ left: 0;
+ top: 0;
+ width: 100%; /* Full width */
+ height: 100%; /* Full height */
+ overflow: auto; /* Enable scroll if needed */
+ background-color: rgb(0,0,0); /* Fallback color */
+ background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+ position: relative;
+ background-color: #fefefe;
+ margin: auto;
+ padding: 0;
+ border: 1px solid #888;
+ width: 80%;
+ box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+ animation-name: animatetop;
+ animation-duration: 0.4s
+}
+
+/* The Close Button */
+.close {
+ color: white;
+ float: right;
+ font-size: 28px;
+ font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+ color: #000;
+ text-decoration: none;
+ cursor: pointer;
+}
+
+.modal-header {
+ padding: 2px 16px;
+ background-color: #5cb85c;
+ color: white;
+}
+
+.modal-body {padding: 2px 16px;}
+
+.modal-footer {
+ padding: 2px 16px;
+ background-color: #5cb85c;
+ color: white;
+}
